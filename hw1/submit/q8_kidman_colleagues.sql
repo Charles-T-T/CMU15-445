@@ -11,6 +11,6 @@ WITH NK_works AS (
 SELECT DISTINCT(p.name)
 FROM crew c
 JOIN people p ON c.person_id = p.person_id
-WHERE c.category = 'actor' OR c.category = 'actress'
+WHERE (c.category = 'actor' OR c.category = 'actress')
 AND c.title_id IN NK_works
-ORDER BY p.name;
+ORDER BY p.name ASC;

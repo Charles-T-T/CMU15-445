@@ -5,7 +5,7 @@ WITH avg_ratings AS (
   JOIN titles t ON r.title_id = t.title_id
   JOIN crew c ON c.title_id = r.title_id
   JOIN people p ON p.person_id = c.person_id
-  WHERE p.born = 1955
+  WHERE p.born = 1955 AND t.type = 'movie'
   GROUP BY c.person_id
 ),
 quantiles AS (

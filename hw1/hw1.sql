@@ -20,13 +20,18 @@
 -- ORDER BY runtime_minutes DESC
 -- LIMIT 10;
 
--- q3
-SELECT name, (died - born) AS age
-FROM people
-WHERE died IS NOT NULL
-AND born >= 1900
-ORDER BY age DESC, name ASC
-LIMIT 20;
+-- -- q3
+-- SELECT 
+--   name, 
+--   CASE 
+--     WHEN died IS NOT NULL
+--     THEN died - born
+--     ELSE 2022 - born
+--   END AS age
+-- FROM people
+-- WHERE born >= 1900
+-- ORDER BY age DESC, name ASC
+-- LIMIT 20;
 
 -- -- q4
 -- SELECT p.name, COUNT(*) AS NUM_APPEARANCES
@@ -86,9 +91,9 @@ LIMIT 20;
 -- SELECT DISTINCT(p.name)
 -- FROM crew c
 -- JOIN people p ON c.person_id = p.person_id
--- WHERE c.category = 'actor' OR c.category = 'actress'
+-- WHERE (c.category = 'actor' OR c.category = 'actress')
 -- AND c.title_id IN NK_works
--- ORDER BY p.name;
+-- ORDER BY p.name ASC;
 
 -- -- q9
 -- WITH avg_ratings AS (
@@ -98,7 +103,7 @@ LIMIT 20;
 --   JOIN titles t ON r.title_id = t.title_id
 --   JOIN crew c ON c.title_id = r.title_id
 --   JOIN people p ON p.person_id = c.person_id
---   WHERE p.born = 1955
+--   WHERE p.born = 1955 AND t.type = 'movie'
 --   GROUP BY c.person_id
 -- ),
 -- quantiles AS (
@@ -114,4 +119,3 @@ LIMIT 20;
 -- ORDER BY avg_rating DESC, name ASC;
 
 -- q10
-
