@@ -73,7 +73,7 @@ LIMIT 10;
 >
 > 我没这么做，但是好在SQLite遇到 `||` 的时候会自动把非字符串类型转化为 `TEXT` 的。
 >
-> > [!CAUTION]
+> > :warning: 
 > >
 > > 最后排序时要用 `INTEGER` 的 `runtime_minutes` ，我一开始写成字符串连接后的 `runtime_mins` 了，导致排序错误（变成按字符串字典序排了 :clown_face: ​）。
 
@@ -314,4 +314,4 @@ ORDER BY avg_rating DESC, name ASC;
 
 ---
 
-TODO: q10
+- [ ] TODO: q10
